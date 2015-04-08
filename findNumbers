@@ -1,0 +1,9 @@
+'Excel formula to find the numbers in the middle of a sentence
+
+'This version gets a number from a string
+'The text "value is 1423" will be returned as 1423
+=SUMPRODUCT(MID(0&A1,LARGE(INDEX(ISNUMBER(--MID(A1,ROW(INDIRECT("1:"&LEN(A1))),1))*ROW(INDIRECT("1:"&LEN(A1))),0,1),ROW(INDIRECT("1:"&LEN(A1))))+1,1)*10^(ROW(INDIRECT("1:"&LEN(A1)))-1))
+
+'This version gets a number from a string where the number has a comma. 
+'The text "value is 1,423" will be returned as 1423
+=SUMPRODUCT(MID(0&A1,LARGE(INDEX(ISNUMBER(--MID(A1,ROW(INDIRECT("1:"&LEN(A1))),1))*ROW(INDIRECT("1:"&LEN(A1))),0,1),ROW(INDIRECT("1:"&LEN(A1))))+1,1)*10^(ROW(INDIRECT("1:"&LEN(A1)))-2))
